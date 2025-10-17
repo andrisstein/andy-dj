@@ -1,43 +1,89 @@
-const videoUrls = {
-  1: "https://1drv.ms/v/c/280a2bd95d91e9da/EahUQNeI3xNOl8EJ_4L61BwBNW5sSUMnKHgSHxHVjEtP9w?e=EibHgF",
-  2: "https://1drv.ms/v/c/280a2bd95d91e9da/EfKvaJaeRDpHg8FdH7RcGScB9XvimfUE_ZKQMe4KOb1Q-w?e=TybGES",
-  3: "https://1drv.ms/v/c/280a2bd95d91e9da/ETMlFB09LpJDk_ZUd2NSiNQBWIlSrsaEEY9WYetL46Lv2g?e=P09Ief",
-  4: "https://1drv.ms/v/c/280a2bd95d91e9da/EQiE0Q8s8C1HgvsDpxqNphoBNIDe3YL649bhhjsNCgxZuw?e=g3I5gE",
-  5: "https://1drv.ms/v/c/280a2bd95d91e9da/ER9DDXUtbDdGg42zC3wDcz0B2HTpyklQqghlf15KMFdXiQ?e=BHgIFa",
-  6: "https://1drv.ms/v/c/280a2bd95d91e9da/EXbPdpIMNSRGvDAX_5kyooUB-pwlnXHIUtXcwTwN1lDsNg?e=emR11J",
-  7: "https://1drv.ms/v/c/280a2bd95d91e9da/EU4AI8QhfLtJqqTW0nbw0pEBMwxjbSclgoVdifFCpV5fWw?e=6Mbjsq",
-  8: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
-  9: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
-  10: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
-  11: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
-  12: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
-  13: "https://1drv.ms/v/c/280a2bd95d91e9da/ES9FW9xKc0FNl2yDsWLXfzIBylmoUI_wi8xrldwELJlNIQ?e=UIUFZf",
-  14: "https://1drv.ms/v/c/280a2bd95d91e9da/EahUQNeI3xNOl8EJ_4L61BwBNW5sSUMnKHgSHxHVjEtP9w?e=EibHgF",
-  15: "https://1drv.ms/v/c/280a2bd95d91e9da/EfKvaJaeRDpHg8FdH7RcGScB9XvimfUE_ZKQMe4KOb1Q-w?e=TybGES",
-  16: "https://1drv.ms/v/c/280a2bd95d91e9da/ETMlFB09LpJDk_ZUd2NSiNQBWIlSrsaEEY9WYetL46Lv2g?e=P09Ief",
-  17: "https://1drv.ms/v/c/280a2bd95d91e9da/EQiE0Q8s8C1HgvsDpxqNphoBNIDe3YL649bhhjsNCgxZuw?e=g3I5gE",
-  18: "https://1drv.ms/v/c/280a2bd95d91e9da/ER9DDXUtbDdGg42zC3wDcz0B2HTpyklQqghlf15KMFdXiQ?e=BHgIFa",
-  19: "https://1drv.ms/v/c/280a2bd95d91e9da/EXbPdpIMNSRGvDAX_5kyooUB-pwlnXHIUtXcwTwN1lDsNg?e=emR11J",
-  20: "https://1drv.ms/v/c/280a2bd95d91e9da/EU4AI8QhfLtJqqTW0nbw0pEBMwxjbSclgoVdifFCpV5fWw?e=6Mbjsq",
-  21: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
-  22: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
-  23: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
-  24: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
-  25: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
-  26: "https://1drv.ms/v/c/280a2bd95d91e9da/ES9FW9xKc0FNl2yDsWLXfzIBylmoUI_wi8xrldwELJlNIQ?e=UIUFZf",
-  27: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
-  28: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
-  29: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
-  30: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
-  31: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
-};
-  function playMilongaVideo() {
-    const day = new Date().getDate(); // 1 to 31
-    const videoUrl = videoUrls[day];
-    if (videoUrl) {
-      window.open(videoUrl, "_blank");
-    } else {
-      alert("No video found for today!");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Milonga as a Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding-top: 100px;
     }
-  }
-</script>
+    h1 {
+      font-size: 3em;
+      color: #333;
+    }
+    h2 {
+      font-size: 1.5em;
+      color: #666;
+      margin-bottom: 50px;
+    }
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #007BFF;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Milonga as a Service</h1>
+  <h2>Welcome to the virtual milonga experience</h2>
+  <div class="button" onclick="playMilongaVideo()">MaaS 24/7 - press here for virtual milonga</div>
+
+  <script>
+    const videoUrls = {
+      1: "https://1drv.ms/v/c/280a2bd95d91e9da/EahUQNeI3xNOl8EJ_4L61BwBNW5sSUMnKHgSHxHVjEtP9w?e=EibHgF",
+      2: "https://1drv.ms/v/c/280a2bd95d91e9da/EfKvaJaeRDpHg8FdH7RcGScB9XvimfUE_ZKQMe4KOb1Q-w?e=TybGES",
+      3: "https://1drv.ms/v/c/280a2bd95d91e9da/ETMlFB09LpJDk_ZUd2NSiNQBWIlSrsaEEY9WYetL46Lv2g?e=P09Ief",
+      4: "https://1drv.ms/v/c/280a2bd95d91e9da/EQiE0Q8s8C1HgvsDpxqNphoBNIDe3YL649bhhjsNCgxZuw?e=g3I5gE",
+      5: "https://1drv.ms/v/c/280a2bd95d91e9da/ER9DDXUtbDdGg42zC3wDcz0B2HTpyklQqghlf15KMFdXiQ?e=BHgIFa",
+      6: "https://1drv.ms/v/c/280a2bd95d91e9da/EXbPdpIMNSRGvDAX_5kyooUB-pwlnXHIUtXcwTwN1lDsNg?e=emR11J",
+      7: "https://1drv.ms/v/c/280a2bd95d91e9da/EU4AI8QhfLtJqqTW0nbw0pEBMwxjbSclgoVdifFCpV5fWw?e=6Mbjsq",
+      8: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
+      9: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
+      10: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
+      11: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
+      12: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
+      13: "https://1drv.ms/v/c/280a2bd95d91e9da/ES9FW9xKc0FNl2yDsWLXfzIBylmoUI_wi8xrldwELJlNIQ?e=UIUFZf",
+      14: "https://1drv.ms/v/c/280a2bd95d91e9da/EahUQNeI3xNOl8EJ_4L61BwBNW5sSUMnKHgSHxHVjEtP9w?e=EibHgF",
+      15: "https://1drv.ms/v/c/280a2bd95d91e9da/EfKvaJaeRDpHg8FdH7RcGScB9XvimfUE_ZKQMe4KOb1Q-w?e=TybGES",
+      16: "https://1drv.ms/v/c/280a2bd95d91e9da/ETMlFB09LpJDk_ZUd2NSiNQBWIlSrsaEEY9WYetL46Lv2g?e=P09Ief",
+      17: "https://1drv.ms/v/c/280a2bd95d91e9da/EQiE0Q8s8C1HgvsDpxqNphoBNIDe3YL649bhhjsNCgxZuw?e=g3I5gE",
+      18: "https://1drv.ms/v/c/280a2bd95d91e9da/ER9DDXUtbDdGg42zC3wDcz0B2HTpyklQqghlf15KMFdXiQ?e=BHgIFa",
+      19: "https://1drv.ms/v/c/280a2bd95d91e9da/EXbPdpIMNSRGvDAX_5kyooUB-pwlnXHIUtXcwTwN1lDsNg?e=emR11J",
+      20: "https://1drv.ms/v/c/280a2bd95d91e9da/EU4AI8QhfLtJqqTW0nbw0pEBMwxjbSclgoVdifFCpV5fWw?e=6Mbjsq",
+      21: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
+      22: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
+      23: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
+      24: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
+      25: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
+      26: "https://1drv.ms/v/c/280a2bd95d91e9da/ES9FW9xKc0FNl2yDsWLXfzIBylmoUI_wi8xrldwELJlNIQ?e=UIUFZf",
+      27: "https://1drv.ms/v/c/280a2bd95d91e9da/EfXHsHspP8NFkDFxe422OYcBeYaMpM_K4yW6AMh8uPl8Bg?e=qSFhra",
+      28: "https://1drv.ms/v/c/280a2bd95d91e9da/EVrM3MAkgCFFqZfKnzQYg4ABXLdWv65uPgpkJuo4QR8ofg?e=JNvNfE",
+      29: "https://1drv.ms/v/c/280a2bd95d91e9da/EWvUM_s2E6NPvrhmFcnA6v4BMBtg1ePSntPcWRooPvvNFQ?e=cJPfoJ",
+      30: "https://1drv.ms/v/c/280a2bd95d91e9da/EVlaHzD-o71OsFTWvYvXvF0By_ANDenN71hyQaSt2u2Spg?e=PwPd46",
+      31: "https://1drv.ms/v/c/280a2bd95d91e9da/EWx_rjiJ0pdGmtv6PrFFp9UBSyi2eFj67FHiFMhveEBQTw?e=adISy0",
+    };
+
+    function playMilongaVideo() {
+      const day = new Date().getDate(); // 1 to 31
+      const videoUrl = videoUrls[day];
+      if (videoUrl) {
+        window.open(videoUrl, "_blank");
+      } else {
+        alert("No video found for today!");
+      }
+    }
+  </script>
+</body>
+</html>
