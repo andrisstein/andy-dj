@@ -9,80 +9,104 @@
       --max-width:1200px;
       --accent:#007BFF;
       --accent-dark:#0056b3;
-      --bg:#f9f9f9;
-      --text:#333;
-      --muted:#666;
+      --text:#0f1720;
+      --muted:#55606a;
+      --card-bg: rgba(255,255,255,0.9);
     }
+
+    /* Page layout */
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+    }
+
+    /* Option 1: Soft gradient background */
     body{
       font-family: Arial, sans-serif;
-      margin:0;
-      padding:2rem 1rem;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
       background: linear-gradient(180deg, #f3f7fb 0%, #eaf0f7 50%, #eef7f3 100%);
       color: var(--text);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:2rem 1rem;
     }
 
     .container{
       width:100%;
       max-width:var(--max-width);
       text-align:center;
+      background: var(--card-bg);
+      border-radius:10px;
+      padding:1.5rem;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.08);
     }
+
     .header-image{
       width:100%;
       height:auto;
       display:block;
-      margin:0 auto 1.5rem;
-      border-radius:6px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      margin:0 auto 1.25rem;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
     }
+
     h1{
-      font-size:2.25rem;
-      margin:.25rem 0;
+      font-size:2rem;
+      margin:0.25rem 0 0.25rem;
+      color: var(--text);
     }
+
     h2{
-      font-size:1.125rem;
-      color:var(--muted);
-      margin:0 0 2rem;
+      font-size:1.05rem;
+      color: var(--muted);
+      margin:0 0 1.25rem;
+      font-weight:400;
     }
+
     .button {
       display:inline-block;
-      padding:15px 30px;
-      font-size:1.2em;
+      padding:12px 26px;
+      font-size:1.05rem;
       color:#fff;
-      background-color:var(--accent);
+      background: linear-gradient(180deg,var(--accent),var(--accent-dark));
       text-decoration:none;
       border-radius:8px;
-      transition:background-color .3s ease;
+      transition: transform .08s ease, box-shadow .12s ease;
       cursor:pointer;
-      margin-bottom:40px;
       border:none;
+      box-shadow: 0 8px 20px rgba(3,102,214,0.12);
     }
-    .button:hover { background-color:var(--accent-dark); }
+
+    .button:active{ transform: translateY(1px); }
+    .button:hover{ box-shadow: 0 12px 28px rgba(3,102,214,0.14); }
+
     .note{
       margin-top:1rem;
       color:var(--muted);
       font-size:.95rem;
     }
+
+    /* compact layout for small screens */
     @media (max-width:520px){
-      h1{ font-size:1.5rem; }
-      .button{ width:100%; box-sizing:border-box; padding:12px; }
+      body{ padding:1rem; }
+      h1{ font-size:1.25rem; }
+      .button{ width:100%; padding:12px; box-sizing:border-box; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" role="main" aria-labelledby="page-title">
     <img class="header-image"
          src="https://raw.githubusercontent.com/andrisstein/andy-dj/refs/heads/main/MaaS%20andy-dj.png"
          alt="Milonga as a Service banner">
 
-    <h1></h1>
-    <h2>Click the button below to open the virtual milonga - Ver 4</h2>
+    <h1 id="page-title">Milonga as a Service</h1>
+    <h2>Click the button below to open the virtual milonga - Ver 5</h2>
 
-    <div class="button" onclick="playMilongaVideo()">MaaS 24/7 - press here for virtual milonga</div>
+    <div class="button" id="maas-button" role="button" aria-pressed="false">MaaS 24/7 - press here for virtual milonga</div>
 
-    <div class="note">If you hear no sound, click the speaker icon on the browser tab or click the video play button. </div>
+    <div class="note">Opens the selected OneDrive video for today in a new tab. If audio is muted, click the browser tab speaker icon or the player play control.</div>
   </div>
 
   <script>
@@ -124,11 +148,19 @@
       const day = new Date().getDate();
       const videoUrl = videoUrls[day];
       if (videoUrl) {
-        window.open(videoUrl, "_blank");
+        window.open(videoUrl, "_blank", "noopener");
       } else {
         alert("No video found for today!");
       }
     }
+
+    document.getElementById('maas-button').addEventListener('click', function () {
+      // update aria state briefly for accessibility
+      const btn = this;
+      btn.setAttribute('aria-pressed', 'true');
+      playMilongaVideo();
+      setTimeout(() => btn.setAttribute('aria-pressed', 'false'), 800);
+    });
   </script>
 </body>
 </html>
