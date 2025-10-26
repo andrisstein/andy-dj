@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Image Test</title>
-  </head>
-  <body>
-    https://raw.githubusercontent.com/andrisstein/andy-dj/refs/heads/main/MaaS%20andy-dj.png
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Milonga as a Service</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{
+      --max-width:1200px;
+      --accent:#007BFF;
+      --accent-dark:#0056b3;
+      --bg:#f9f9f9;
+      --text:#333;
+      --muted:#666;
+    }
+    body{
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin:0;
+      padding:2rem 1rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      text-align:center;
+    }
+    .header-image{
+      width:100%;
+      height:auto;
+      display:block;
+      margin:0 auto 1.5rem;
+      border-radius:6px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    h1{
+      font-size:2.25rem;
+      margin:.25rem 0;
+    }
+    h2{
+      font-size:1.125rem;
+      color:var(--muted);
+      margin:0 0 2rem;
+    }
+    .cta {
+      display:inline-block;
+      padding:14px 28px;
+      font-size:1.05rem;
+      color:#fff;
+      background:var(--accent);
+      text-decoration:none;
+      border-radius:8px;
+      transition:background-color .18s ease, transform .08s ease;
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    }
+    .cta:hover{ background:var(--accent-dark); transform:translateY(-2px); }
+    .note{
+      margin-top:1.25rem;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    @media (max-width:520px){
+      h1{ font-size:1.5rem; }
+      .cta{ width:100%; box-sizing:border-box; padding:12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="header-image"
+         src="https://raw.githubusercontent.com/andrisstein/andy-dj/refs/heads/main/MaaS%20andy-dj.png"
+         alt="Milonga as a Service banner">
+
     <h1>Milonga as a Service</h1>
     <h2>Welcome to the virtual milonga experience</h2>
-  </body>
+
+    <a class="cta" href="javascript:void(0);" id="maas-cta">MaaS 24/7 - press here for virtual milonga</a>
+
+    <div class="note">Click the button to open the virtual milonga; replace the button href with your meeting or stream URL when ready.</div>
+  </div>
+
+  <script>
+    // placeholder: replace with real URL or JS action you used on Oct 16
+    const cta = document.getElementById('maas-cta');
+    cta.addEventListener('click', function (e) {
+      // Example action: open stream in a new tab
+      // window.open('https://your-stream-or-room.example', '_blank');
+      alert('This is a placeholder action. Replace with your stream URL or desired behavior.');
+    });
+  </script>
+</body>
 </html>
