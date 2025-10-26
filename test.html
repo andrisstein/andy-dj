@@ -64,6 +64,16 @@
       color:var(--muted);
       font-size:.95rem;
     }
+    .timestamp {
+      margin-top:1rem;
+      color:#111;
+      font-size:0.95rem;
+      background:#fff;
+      padding:6px 10px;
+      border-radius:6px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.06);
+      display:inline-block;
+    }
     @media (max-width:520px){
       h1{ font-size:1.5rem; }
       .button{ width:100%; box-sizing:border-box; padding:12px; }
@@ -81,10 +91,23 @@
 
     <div class="button" onclick="playMilongaVideo()">MaaS 24/7 - press here for virtual milonga</div>
 
-    <div class="note">Click the button to open the virtual milonga; replace OneDrive links or the selection logic as needed.</div>
+    <div class="note">Click the button to open the virtual milonga; replace OneDrive links or selection logic as needed.</div>
+
+    <div class="timestamp" id="build-timestamp">
+      <!-- Replace the BUILD_TIMESTAMP value below with the current date/time before committing -->
+      Updated: 2025-10-26 12:15
+    </div>
   </div>
 
   <script>
+    // MANUAL BUILD TIMESTAMP
+    // Replace the string below with the current date/time before committing to verify deployment.
+    // Example: const BUILD_TIMESTAMP = "Updated: 2025-10-26 12:15";
+    const BUILD_TIMESTAMP = "Updated: 2025-10-26 12:15";
+
+    // Optionally keep the timestamp element synchronized with the BUILD_TIMESTAMP value
+    document.getElementById('build-timestamp').textContent = BUILD_TIMESTAMP;
+
     const videoUrls = {
       1: "https://1drv.ms/v/c/280a2bd95d91e9da/EahUQNeI3xNOl8EJ_4L61BwBNW5sSUMnKHgSHxHVjEtP9w?e=EibHgF",
       2: "https://1drv.ms/v/c/280a2bd95d91e9da/EfKvaJaeRDpHg8FdH7RcGScB9XvimfUE_ZKQMe4KOb1Q-w?e=TybGES",
@@ -131,4 +154,3 @@
   </script>
 </body>
 </html>
-```
