@@ -9,7 +9,17 @@
   gtag('js', new Date());
 
   gtag('config', 'G-M9DLLMB62Z');
+  // send a GA4 event when the MaaS button is clicked
+  document.getElementById('maas-button').addEventListener('click', function () {
+    gtag('event', 'maas_button_click', {
+      event_label: 'MaaS 24/7 button',
+      event_category: 'engagement',
+      page_path: location.pathname + location.search,
+      timestamp: new Date().toISOString()
+    });
+  });
 </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Milonga as a Service</title>
