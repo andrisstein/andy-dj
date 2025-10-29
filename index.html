@@ -114,7 +114,7 @@
     <h1 id="page-title"> </h1>
     <h2></h2>
 
-    <div class="button" id="maas-button" role="button" aria-pressed="false" tabindex="0">MaaS 24/7 - press here for MaaS-3</div>
+    <div class="button" id="maas-button" role="button" aria-pressed="false" tabindex="0">MaaS 24/7 - press here for MaaS-4</div>
 
     <div class="note">Opens MaaS in a new tab. If audio is muted, click the browser tab speaker icon or the player play control.</div>
   </div>
@@ -181,12 +181,14 @@
 
     console.log(`Clicked: ${eventName}`); // Confirm it's firing
 
-    gtag('event', eventName, {
-      event_label: eventLabel,
-      event_category: eventCategory,
+    gtag('event', 'maas_button_click', {
+      debug_mode: true,
+      event_label: 'Manual test',
+      event_category: 'engagement',
       page_path: location.pathname + location.search,
       timestamp: new Date().toISOString()
     });
+
   }
 
   document.addEventListener('DOMContentLoaded', function () {
