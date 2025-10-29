@@ -188,14 +188,21 @@
       console.warn("MaaS button not found: #maas-button");
     }
 
-    function sendMaasEvent() {
-      gtag('event', 'maas_button_click', {
-        event_label: 'MaaS 24/7 button',
-        event_category: 'engagement',
+    function sendGAEvent(el) {
+      const eventName = el.dataset.gaEvent || 'generic_click';
+      const eventLabel = el.dataset.gaLabel || el.textContent.trim();
+      const eventCategory = el.dataset.gaCategory || 'interaction';
+    
+      console.log(`Clicked: ${eventName}`); // ✅ Add this line
+    
+      gtag('event', eventName, {
+        event_label: eventLabel,
+        event_category: eventCategory,
         page_path: location.pathname + location.search,
         timestamp: new Date().toISOString()
       });
     }
+
   });
   </script>
 
