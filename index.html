@@ -203,6 +203,32 @@
       });
     }
   </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const maasBtn = document.getElementById('maas-button');
+      if (maasBtn) {
+        maasBtn.addEventListener('click', sendMaasEvent);
+        maasBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            sendMaasEvent();
+            e.preventDefault();
+          }
+        });
+      } else {
+        console.warn("MaaS button not found: #maas-button");
+      }
+  
+      function sendMaasEvent() {
+        gtag('event', 'maas_button_click', {
+          event_label: 'MaaS 24/7 button',
+          event_category: 'engagement',
+          page_path: location.pathname + location.search,
+          timestamp: new Date().toISOString()
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
