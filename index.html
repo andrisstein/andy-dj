@@ -114,7 +114,7 @@
     <h1 id="page-title"> </h1>
     <h2></h2>
 
-    <div class="button" id="maas-button" role="button" aria-pressed="false" tabindex="0">MaaS 24/7 - press here for MaaS-2</div>
+    <div class="button" id="maas-button" role="button" aria-pressed="false" tabindex="0">MaaS 24/7 - press here for MaaS-3</div>
 
     <div class="note">Opens MaaS in a new tab. If audio is muted, click the browser tab speaker icon or the player play control.</div>
   </div>
@@ -173,38 +173,38 @@
     });
   </script>
   
-  <script>
+ <script>
+  function sendMaaSEvent(el) {
+    const eventName = el.dataset.gaEvent || 'maas_button_click';
+    const eventLabel = el.dataset.gaLabel || el.textContent.trim();
+    const eventCategory = el.dataset.gaCategory || 'engagement';
+
+    console.log(`Clicked: ${eventName}`); // Confirm it's firing
+
+    gtag('event', eventName, {
+      event_label: eventLabel,
+      event_category: eventCategory,
+      page_path: location.pathname + location.search,
+      timestamp: new Date().toISOString()
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     const maasBtn = document.getElementById('maas-button');
     if (maasBtn) {
-      maasBtn.addEventListener('click', sendMaasEvent);
+      maasBtn.addEventListener('click', () => sendMaaSEvent(maasBtn));
       maasBtn.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
-          sendMaasEvent();
+          sendMaaSEvent(maasBtn);
           e.preventDefault();
         }
       });
     } else {
       console.warn("MaaS button not found: #maas-button");
     }
-
-    function sendMaaSEvent(el) {
-      const eventName = el.dataset.gaEvent || 'generic_click';
-      const eventLabel = el.dataset.gaLabel || el.textContent.trim();
-      const eventCategory = el.dataset.gaCategory || 'interaction';
-    
-      console.log(`Clicked: ${eventName}`); // ✅ Add this line
-    
-      gtag('event', eventName, {
-        event_label: eventLabel,
-        event_category: eventCategory,
-        page_path: location.pathname + location.search,
-        timestamp: new Date().toISOString()
-      });
-    }
-
   });
-  </script>
+</script>
+
 
 </body>
 </html>
