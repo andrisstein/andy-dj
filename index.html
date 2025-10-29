@@ -188,7 +188,7 @@
       console.warn("MaaS button not found: #maas-button");
     }
 
-    function sendGAEvent(el) {
+    function sendMaaSEvent(el) {
       const eventName = el.dataset.gaEvent || 'generic_click';
       const eventLabel = el.dataset.gaLabel || el.textContent.trim();
       const eventCategory = el.dataset.gaCategory || 'interaction';
